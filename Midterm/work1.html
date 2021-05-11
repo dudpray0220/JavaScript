@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>1번문제</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+<body>
+  <input type="text" id="num1" placeholder="첫번째 숫자를 입력하세요"><br>
+  <input type="text" id="num2" placeholder="두번째 숫자를 입력하세요"><br>
+  <input type="button" value="출력" id="calcBtn"><br>
+
+</body>
+<script type="text/javascript">
+  $("#calcBtn").click(function() {
+    // 변수선언
+    let number1 = Number($("#num1").val());
+    let number2 = Number($("#num2").val());
+    let sum = number1 + number2;
+    let minus = Math.abs(number1 - number2);
+    let multiple = number1 * number2;
+    let division = 0;
+
+    // 나누기 if문
+    if (number1 >= number2) {
+      division = number1 / number2;
+    } else {
+      division = number2 / number1;
+    }
+
+    // 콘솔로그에 출력
+    console.log(`더하기 : ${sum}, 빼기 : ${minus}, 곱하기 : ${multiple}, 나누기 : ${division}`);
+  })
+</script>
+
+</html>
