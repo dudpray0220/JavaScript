@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>3번문제</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+<body>
+  <div id="addInputArea"></div>
+  <input type="button" value="추가" id="addBtn"><br>
+  <input type="button" value="출력" id="calcBtn"><br>
+  <span id="calcArea"></span>
+
+</body>
+<script type="text/javascript">
+  let i = 0;
+  let total = 0;
+
+  // 추가버튼 클릭시 input text 추가 로직 구현
+  $(document).ready(function() {
+    $("#addBtn").click(function() {
+      $("#addInputArea").append(`<input type="text" name="box" id="nums${i}"><br>`)
+      i++;
+    });
+  });
+
+  // for문으로 input에 입력된 숫자들 합 구하기
+  $("#calcBtn").click(function() {
+    for (let j = 0; j < $('input[name="box"]').length; j++) {
+      total += Number($(`#nums${j}`).val());
+    }
+
+    $("#calcArea").append(`합 결과 : ${total} <br>`);
+    console.log(total);
+    total = 0; // 초기화
+  })
+</script>
+
+</html>

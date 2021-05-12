@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>2번문제</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+<body>
+  1<input type="radio" name="num1" checked>
+  2<input type="radio" name="num1">
+  3<input type="radio" name="num1">
+  4<input type="radio" name="num1">
+  5<input type="radio" name="num1">
+  6<input type="radio" name="num1">
+  7<input type="radio" name="num1">
+  8<input type="radio" name="num1">
+  9<input type="radio" name="num1">
+  10<input type="radio" name="num1"> <br><br>
+
+  1<input type="radio" name="num2" checked>
+  2<input type="radio" name="num2">
+  3<input type="radio" name="num2">
+  4<input type="radio" name="num2">
+  5<input type="radio" name="num2">
+  6<input type="radio" name="num2">
+  7<input type="radio" name="num2">
+  8<input type="radio" name="num2">
+  9<input type="radio" name="num2">
+  10<input type="radio" name="num2"> <br><br>
+
+  1<input type="radio" name="num3" checked>
+  2<input type="radio" name="num3">
+  3<input type="radio" name="num3">
+  4<input type="radio" name="num3">
+  5<input type="radio" name="num3">
+  6<input type="radio" name="num3">
+  7<input type="radio" name="num3">
+  8<input type="radio" name="num3">
+  9<input type="radio" name="num3">
+  10<input type="radio" name="num3"> <br>
+  <input type="button" value="출력" id="calcBtn"><br>
+
+</body>
+<script type="text/javascript">
+  $("#calcBtn").click(function() {
+    let number1 = 0;
+    let number2 = 0;
+    let number3 = 0;
+
+    // for문으로 숫자 3개 값 가져오기
+    for (let i = 0; i < $('input[name="num1"]').length; i++) {
+      if ($('input[name="num1"]')[i].checked) {
+        number1 = i + 1
+        // console.log(number1);
+      }
+    }
+    for (let i = 0; i < $('input[name="num2"]').length; i++) {
+      if ($('input[name="num2"]')[i].checked) {
+        number2 = i + 1
+        // console.log(number2);
+      }
+    }
+    for (let i = 0; i < $('input[name="num3"]').length; i++) {
+      if ($('input[name="num3"]')[i].checked) {
+        number3 = i + 1
+        // console.log(number3);
+      }
+    }
+
+    let max = Math.max(number1, number2, number3);
+    let min = Math.min(number1, number2, number3);
+    console.log(Math.pow(max, min));
+  })
+</script>
+
+</html>
