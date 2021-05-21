@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>4번문제</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+<body>
+  학생정보 입력<br><br>
+  학번 : <input type="text" id="stdNo"><br>
+  이름 : <input type="text" id="stdName"><br><br>
+  <input type="button" value="DB에 입력" id="postStdInfoBtn">
+</body>
+<script type="text/javascript">
+  $("#postStdInfoBtn").click(function() {
+    console.log($("#stdNo").val(), $("#stdName").val()); // 확인차 콘솔로그에 띄움
+
+    $.ajax({
+      type: "POST",
+      url: `/insertStudent`,
+      data: {
+        studentNo: $("#stdNo").val(),
+        studentName: $("#stdName").val(),
+      },
+      success: function(res) {
+        console.log(res);
+      }
+    });
+  });
+</script>
+
+</html>
