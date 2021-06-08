@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  아이템 : <input type="text" id="inputItemName">
+  가격 : <input type="text" id="inputItemPrice">
+  <input type="button" value="입력" id="insertBtn">
+  <input type="button" value="돌아가기" id="returnToMain">
+</body>
+
+<script type="text/javascript">
+  $("#insertBtn").click(function() {
+    console.log($("#inputItemName").val(), $("#inputItemPrice").val()); // 확인차 콘솔로그에 띄움
+
+    if($("#inputItemPrice").val() > 0 && $("#inputItemPrice").val() < 10000000000) {
+    $.ajax({
+      type: "POST",
+      url: `/insertItem`,
+      data: {
+        itemName: $("#inputItemName").val(),
+        itemPrice: $("#inputItemPrice").val(),
+      },
+      success: function(res) {
+        console.log(res);
+        alert(res)
+      }
+    });
+
+    }
+    else {
+      alert("가격은 숫자를 입력하세요 또는 10000000000이하를 입력하세요")
+    }
+  });
+
+  // location.href = "/";
+  $("#returnToMain").click(function() {
+    location.href = "http://localhost:80/form";
+  })
+</script>
+
+</html>

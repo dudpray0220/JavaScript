@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  가격 : <input type="text" id="price">
+  <input type="button" value="확인" id="itemBtn">
+  <input type="button" value="입력페이지" id="goToInsert">
+  <input type="button" value="목록" id="listBtn">
+</body>
+
+<script type="text/javascript">
+  $("#itemBtn").click(function() {
+    console.log($("#price").val());
+    $.ajax({
+      type: "get",
+      url: `/getItem`,
+      data: {
+        price: $("#price").val(),
+      },
+      success : function(res){
+        alert(res);
+      }
+    });
+  });
+
+  // 클릭했을 때, 다른 홈페이지로 들어가기
+  $("#goToInsert").click(function() {
+    location.href="http://localhost:80/insertForm";
+  });
+
+  $("#listBtn").click(function() {
+    location.href="http://localhost:80/listForm";
+  })
+</script>
+
+</html>

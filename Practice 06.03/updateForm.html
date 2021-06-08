@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    아이템 입력폼 <br>
+    아이템이름 : <input type="text" id="name" >
+    가격 : <input type="text" id="price" ><br>
+    <input type="button" value="수정" id="itemUpdateBtn">
+    <input type="button" value="돌아가기" id="goToMainPage">
+
+  </body>
+
+  <script>
+    let no = location.href.split("?")[1];
+
+    $.ajax({
+      type: "get",
+      url: `/getOneItem`,
+      data:{
+        no: no,
+      },
+      success: function(res) {
+        // $("#name").val()하면 그 ID의 값을 그냥 가져오는 것이고
+        // $("#name").val(res[0].itemName); 하면 그 I에 val()안의 값을 치환하는 것이다!
+        $("#name").val(res[0].itemName);
+        $("#price").val(res[0].itemPrice);
+      }
+    });
+
+  $("#itemUpdateBtn").click(function(){
+    $.ajax({
+      type: "put",
+      url: `/updateItem`,
+      data: {
+        no: no,
+        price: $("#price").val(),
+        name: $("#name").val(),
+      },
+      success: function(res) {
+        alert(res);
+      }
+    });
+  });
+
+
+  $("#goToMainPage").click(function(){
+    location.href = "/listForm";
+  });
+  </script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  <div id="listArea">
+
+  </div>
+  <input type="button" value="돌아가기" id="goToMainPage">
+</body>
+
+<script type="text/javascript">
+  //alert(1)
+  // $(document).ready(function() {
+  $.ajax({
+    type: "get",
+    url: `/getList`,
+    data: {},
+    success: function(res) {
+      for (let i = 0; i < res.length; i++) {
+        // span 영역 자체를 생성해주는 것.
+        // 변수만 ${} 로 감싸줌.
+        let item = res[i];
+        $("#listArea").append(`<span id="item${item.no}">${item.no} / ${item.itemName} / ${item.itemPrice}
+          <input type="button" name="" value="삭제하기" onclick="deleteItem(${item.no})">
+          <input type="button" name="" value="수정하기" onclick="goToUpdateForm(${item.no})"><br><span>`);
+      }
+    }
+  });
+
+  function goToUpdateForm(no) {
+    location.href = `/updateForm?${no}`
+  }
+
+  function btnDelete(no) {
+    $.ajax({
+      type: "delete",
+      url: `/deleteItem`,
+      data: {
+        no: no //number(no) 어차피 숫자니까 그냥 no써줌.
+      },
+      success: function(res) {
+        if (res == 'ok') {
+          alert("삭제되었습니다")
+          $(`#item${no}`).remove();
+        } else if (res == 'error') {
+          alert("에러가 발생했습니다. 잘 좀 하십시오");
+        }
+      }
+    });
+  }
+
+  $("#goToMainPage").click(function() {
+    location.href = "/form";
+  });
+
+    let fruit1 = "딸기", fruit2 = "바나나", fruit3 = "사과";
+  console.log("제가 좋아하는 과일은 " + fruit1 + "와 " + fruit2 + "와 " + fruit3 + "입니다.");
+  console.log(`제가 좋아하는 과일은 ${fruit1}와 ${fruit2}와 ${fruit3}입니다.`);
+  console.log("제가 좋아하는 과일은 fruit1 와 fruit2와 fruit3입니다.");
+
+  </script>
+
+</html>
