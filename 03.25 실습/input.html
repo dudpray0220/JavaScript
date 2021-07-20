@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>input information</title>
+
+      <script src = "https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    뉴스정보 입력<br>
+    <!-- 학번 : <input type="text" id="stdNo"><br> -->
+    제목 : <input type="text" id="newsTit"><br>
+    내용 : <textarea id="newsCon" rows="8" cols="40"></textarea><br>
+    <input type="button" value="뉴스 등록" id="postNewsInfoBtn">
+  </body>
+  <script type="text/javascript">
+    $("#postNewsInfoBtn").click(function() {
+      console.log($("#newsTit").val(), $("#newsCon").val());
+
+      $.ajax({
+        type: "POST",
+        // url: `/testdb?no=${$("#stdNo").val()}`,
+        url: `/news`,
+        data: {
+          title: $("#newsTit").val(),
+          content: $("#newsCon").val(),
+        },
+        success: function(res) {
+          console.log(res);
+          if (res=='not ok') {
+            alert("입력 실패");
+          }
+          else if (res=='ok') {
+            alert("입력 성공");
+          }
+        }
+      });
+
+    });
+  </script>
+</html>
