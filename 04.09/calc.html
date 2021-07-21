@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>무료로 단계산 해드립니다</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  <input type="text" placeholder="단 계산할 숫자 입력" id="number"><br>
+  <input type="text" placeholder="몇 단까지 할거임?" id="inputNumber"><br>
+  <input type="button" value="단계산" id="calcNumber"><br>
+  <span id="calcArea"></span>
+</body>
+
+<script type="text/javascript">
+  // $("#calcNumber").click(function() {
+  //   let number = $("#number").val();
+  //   let inputNumber = $("#inputNumber").val();
+  //   $.ajax({
+  //     type: "post",
+  //     url: `/postDan`,
+  //     data: {
+  //       number: number,
+  //       inputNumber: inputNumber
+  //     }, // 보낼데이터
+  //     success: function(res) {
+  //       console.log(res);
+  //     }
+  //   });
+  // });
+
+  $("#calcNumber").click(function() {
+    let number = $("#number").val();
+    let inputNumber = $("#inputNumber").val();
+
+    $("#calcArea").html("");
+    for (let i = 1; i <= inputNumber; i++) {
+      $("#calcArea").append(`${number} X ${i} = ${number*i} <br>`);
+      console.log(`${number} X ${i} = ${number*i}`);
+    }
+  });
+</script>
+
+</html>

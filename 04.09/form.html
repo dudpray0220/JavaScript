@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>안녕</title>
+        <script src = "https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    FRIDAY
+    <br>
+    <input type="button" value="뉴스 가져오기" id="button1">
+    <span id="resultArea"></span>
+  </body>
+
+  <script type="text/javascript">
+
+  $("#button1").click(function() {
+    console.log("명령확인");
+    $.ajax({
+      type: "GET",
+      url: `/getNewsss`,
+      data: {
+      }, // 보낼데이터
+      success: function(res) {
+        $("#resultArea").append(`${res.no} / ${res.title} / ${res.content}`);
+      }
+    });
+  });
+
+  </script>
+</html>

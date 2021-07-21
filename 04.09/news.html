@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>글 가져오기</title>
+      <script src = "https://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    제목 : <input type="text" value="" id="title"><br>
+    내용 : <input type="text" value="" id="content"><br>
+    <input type="button" value="글쓰기" id="wirteNewsBtn"><br>
+    <input type="button" value="모든글 가져오기" id="getNewsBtn"><br>
+    <span id="resultArea"></span>
+  </body>
+
+  <script>
+  $("#wirteNewsBtn").click(function() {
+    let title = $("#title").val();
+    let content = $("#content").val();
+    $.ajax({
+      type: "post",
+      url: `/postNews`,
+      data: {
+        title: title,
+        content: content
+      }, // 보낼데이터
+      success: function(res) {
+        console.log(res);
+      }
+    });
+  });
+
+  $("#getNewsBtn").click(function() {
+    $.ajax({
+      type: "get",
+      url: `/getNews`,
+      data: {
+      }, // 보낼데이터
+      success: function(res) {
+
+        console.log(res);
+        $("#resultArea").html(""); // html은 함수임. 있는 값 없애는? append 하면 계속 붙고
+        for(let i=0;i<res.length;i++) {
+          $("#resultArea").append(`${res[i].no} / ${res[i].title} / ${res[i].content}<br>`);
+        }
+      }
+    });
+  });
+
+  </script>
+</html>

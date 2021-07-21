@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>라디오 타파</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+<body>
+  <input type="text" id="num1">
+  <input type="radio" name="a" value="1">
+  <input type="radio" name="a" value="2">
+  <input type="radio" name="a" value="3" checked>
+  <input type="button" id="radioCheckBtn" value="라디오마스터">
+</body>
+<script type="text/javascript">
+  $("#radioCheckBtn").click(function() {
+
+    let num1 = Number($("#num1").val());
+    let num2 = 10;
+    console.log(num1 === num2);
+  });
+</script>
+
+</html>

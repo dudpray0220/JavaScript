@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  <input type="text" id="num1"><br>
+  <input type="text" id="num2"><br>
+  짝 : <input type="radio" name="oddOrEven"><br>
+  홀 : <input type="radio" name="oddOrEven" checked><br>
+  <input type="button" id="gogoBtn" value="구구단"><br>
+  <span id="resultArea"></span>
+</body>
+<script type="text/javascript">
+  $("#gogoBtn").click(function() {
+
+    $("#resultArea").html("");
+    let num1 = Number($("#num1").val());
+    let num2 = Number($("#num2").val());
+
+    if ($('input[name="oddOrEven"]')[0].checked) {
+      for (let i = 1; i <= num2; i++) {
+        if (i % 2 == 0) {
+          $("#resultArea").append(`${num1} X ${i} = ${num1 * i} <br>`);
+        }
+      }
+    }
+
+    if ($('input[name="oddOrEven"]')[1].checked) {
+      for (let i = 1; i <= num2; i++) {
+        if (i % 2 == 1) {
+          $("#resultArea").append(`${num1} X ${i} = ${num1 * i} <br>`);
+        }
+      }
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>무료로 단계산 업그레이드 하였씁니다</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  <input type="text" placeholder="단 계산할 숫자 입력" id="number"><br>
+  <input type="text" placeholder="몇 단까지 할거임?" id="inputNumber"><br>
+  짝 : <input type="radio" name="calc" value="even"><br> <!-- name이 같다면 중복선택안됨! -->
+  홀 : <input type="radio" name="calc" value="odd" checked><br>
+  <input type="button" value="단계산" id="calcNumber"><br>
+  <span id="calcArea"></span>
+</body>
+
+<script type="text/javascript">
+  $("#calcNumber").click(function() {
+    let number = $("#number").val();
+    let inputNumber = $("#inputNumber").val();
+
+    $("#calcArea").html("");
+
+    if ($("input[type=radio][name=calc]:checked").val() == "odd") {
+      for (let i = 1; i <= inputNumber; i += 2) {
+        $("#calcArea").append(`${number} X ${i} = ${number*i} <br>`);
+        console.log(`${number} X ${i} = ${number*i}`);
+      }
+    }
+
+    else if ($("input[type=radio][name=calc]:checked").val() == "even") {
+      for (let i = 2; i <= inputNumber; i += 2) {
+        $("#calcArea").append(`${number} X ${i} = ${number*i} <br>`);
+        console.log(`${number} X ${i} = ${number*i}`);
+      }
+    }
+  });
+</script>
+
+</html>
