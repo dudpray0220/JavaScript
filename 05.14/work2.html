@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <body>
+    가격: <input type="text" name="" value="" id="price">
+    <input type="button" name="확인" value="확인" id="selectBtn">
+  </body>
+  <script type="text/javascript"> //script라고 써줘도 무방.
+
+
+  $("#selectBtn").click(function(){
+
+      $.ajax({
+          type:"GET",
+          url:`/selectMax?price=${$("#price").val()}`,
+          data : {
+
+          },
+          success: function(res){
+//이자리에 alert
+            alert(res);
+            //console.log("ok");
+          },
+
+      });
+  });
+
+</script>
+</html>

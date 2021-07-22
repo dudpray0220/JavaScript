@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>라디오버튼</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  1<input type="radio" name="radioName" checked><br>
+  2<input type="radio" name="radioName"><br>
+  3<input type="radio" name="radioName"><br>
+  4<input type="radio" name="radioName"><br>
+  5<input type="radio" name="radioName"><br>
+  6<input type="radio" name="radioName"><br>
+  7<input type="radio" name="radioName"><br>
+  8<input type="radio" name="radioName"><br>
+  9<input type="radio" name="radioName"><br>
+  10<input type="radio" name="radioName"><br>
+  <input type="button" value="몇번째?" id="check">
+</body>
+
+<script type="text/javascript">
+  $("#check").click(function() {
+    for (let i = 0; i < $('input[name="radioName"]').length; i++) {
+      if ($('input[name="radioName"]')[i].checked) {
+        console.log(`${i+1}번째가 선택되었습니다`);
+      }
+      // else if ($('input[name="radioName"]')[2].checked) {
+      //   alert("3번을 선택하다니!")
+      //   continue;
+      // }
+      else continue;
+    }
+  });
+
+  console.log($('input[name="radioName"]'));
+  console.log($('input[name="radioName"]')[0]);
+  console.log($('input[name="radioName"]').length);
+  console.log($('input[name="radioName"]')[0].checked);
+  console.log($('input[name="radioName"]')[1].checked);
+</script>
+
+</html>

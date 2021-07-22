@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>실습2</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  arr1 <br>
+  <span id="resultArea"></span><br>
+  arr2 <br>
+  <span id="resultArea2"></span><br>
+  arr3 <br>
+  <span id="resultArea3"></span><br>
+  arr4 <br>
+  <span id="resultArea4"></span><br>
+
+</body>
+<script type="text/javascript">
+  let arr1 = [];
+  let arr2 = [];
+  let arr3 = [];
+  let arr4 = [];
+  let num = 1;
+
+  for (let i = 0; i < 5; i++) {
+    arr1[i] = [];
+    for (let j = 0; j < 5; j++) {
+      //arr1[i][j] = (j + 1) + (5 * i);
+      arr1[i][j] = num;
+      num++;
+    }
+  }
+
+  num = 1;
+  for (let i = 0; i < 5; i++) {
+    arr2[i] = [];
+    for (let j = 0; j < 5; j++) {
+      //arr2[i][j] = 1 + (3 * j) + (15 * i);
+      arr2[i][j] = num;
+      num += 3;
+    }
+  }
+
+  for (let i = 0; i < 5; i++) {
+    arr3[i] = [];
+    for (let j = 0; j < 5; j++) {
+      arr3[i][j] = j * i;
+    }
+  }
+
+  for (let i = 0; i < 5; i++) {
+    arr4[i] = [];
+    for (let j = 0; j < 5; j++) {
+      //arr4[i][j] = (10 + j + 1) + (10 * i) + "";
+      arr4[i][j] = `${i+1}${j+1}`
+    }
+  }
+
+  for (let i = 0; i < arr1.length; i++) {
+    $("#resultArea").append(`[${arr1[i]}]`, "<br>")
+    $("#resultArea2").append(`[${arr2[i]}]`, "<br>")
+    $("#resultArea3").append(`[${arr3[i]}]`, "<br>")
+    $("#resultArea4").append(`[${arr4[i]}]`, "<br>")
+  }
+
+
+  console.log(arr1.length);
+  console.log(arr1, arr2, arr3, arr4);
+</script>
+
+</html>

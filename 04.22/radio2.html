@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>실습2</title>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  <div class="">
+    1번 <br>
+    &nbsp 가중치 :
+    &nbsp 0<input type="radio" name="first">
+    &nbsp 1<input type="radio" name="first" checked>
+    &nbsp 2<input type="radio" name="first">
+    &nbsp 3<input type="radio" name="first">
+    &nbsp 4<input type="radio" name="first"> <br>
+    <input type="text" id="num1" placeholder="곱할 숫자를 입력해!">
+  </div><br>
+
+  <div class="">
+    2번 <br>
+    &nbsp 가중치 :
+    &nbsp 0<input type="radio" name="second">
+    &nbsp 1<input type="radio" name="second" checked>
+    &nbsp 2<input type="radio" name="second">
+    &nbsp 3<input type="radio" name="second">
+    &nbsp 4<input type="radio" name="second"> <br>
+    <input type="text" id="num2" placeholder="곱할 숫자를 입력해!">
+  </div><br>
+
+  <div class="">
+    3번 <br>
+    &nbsp 가중치 :
+    &nbsp 0<input type="radio" name="third">
+    &nbsp 1<input type="radio" name="third" checked>
+    &nbsp 2<input type="radio" name="third">
+    &nbsp 3<input type="radio" name="third">
+    &nbsp 4<input type="radio" name="third"> <br>
+    <input type="text" id="num3" placeholder="곱할 숫자를 입력해!">
+  </div>
+  <span id="resultArea"></span><br>
+  <input type="button" id="calc" value="계산!">
+</body>
+
+<script type="text/javascript">
+  $("#calc").click(function() {
+    let num1 = Number($("#num1").val());
+    let num2 = Number($("#num2").val());
+    let num3 = Number($("#num3").val());
+
+    let radioNum1;
+    let radios1 = $('input[name="first"]');
+    for (let i = 0; i < radios1.length; i++) {
+      if (radios1[i].checked) {
+        radioNum1 = i;
+        break;
+      }
+    }
+
+    let radioNum2;
+    let radios2 = $('input[name="second"]');
+    for (let i = 0; i < radios2.length; i++) {
+      if (radios2[i].checked) {
+        radioNum2 = i;
+        break;
+      }
+    }
+
+    let radioNum3;
+    let radios3 = $('input[name="third"]');
+    for (let i = 0; i < radios3.length; i++) {
+      if (radios3[i].checked) {
+        radioNum3 = i;
+        break;
+      }
+    }
+
+    $("#resultArea").html("");
+    $("#resultArea").append(`(${radioNum1}*${num1}) + (${radioNum2}*${num2}) + (${radioNum3}*${num3}) = ${radioNum1*num1 + radioNum2*num2 + radioNum3*num3}`)
+
+    console.log(num1, num2, num3, num1 + num2);
+    //console.log(radios1[0]);
+    //console.log(radios1.length);
+    console.log(radioNum1, radioNum2, radioNum3);
+  })
+</script>
+
+</html>
